@@ -1,5 +1,6 @@
 package org.redhat.appdev;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.camel.Exchange;
@@ -9,7 +10,9 @@ import org.slf4j.LoggerFactory;
 @Named("myBean")
 public class Hello {
 
-  private Logger logger = LoggerFactory.getLogger(Hello.class.getName());
+  @Inject
+  private Logger logger;
+
 
   public void post(Exchange exchange) {
 
@@ -19,6 +22,8 @@ public class Hello {
   }
 
   public void get(Exchange exchange) {
+
+    logger.info("Is producer working?");
 
     exchange.getOut().setBody("I was invoked via GET method");
 
