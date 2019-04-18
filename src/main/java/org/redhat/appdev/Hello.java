@@ -13,13 +13,14 @@ public class Hello {
 
   public void post(Exchange exchange) {
 
-    logger.info("I was invoked via POST method");
+    exchange.getOut().setBody("I was invoked via POST method");
+
 
   }
 
   public void get(Exchange exchange) {
 
-    logger.info("I was invoked via GET method");
+    exchange.getOut().setBody("I was invoked via GET method");
 
   }
 }
